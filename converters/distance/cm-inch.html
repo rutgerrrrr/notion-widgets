@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centimeters ↔ Inches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Centimeters ↔ Inches</h3>
+    <div class="inputs">
+      <input type="number" id="cmInput" placeholder="Centimeters (cm)" oninput="convertCmToInch()">
+      <input type="number" id="inchInput" placeholder="Inches (in)" oninput="convertInchToCm()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCmToInch() {
+      const cm = parseFloat(document.getElementById('cmInput').value);
+      if (!isNaN(cm)) {
+        const inch = cm / 2.54;
+        document.getElementById('inchInput').value = inch.toFixed(4);
+        document.getElementById('result').innerText = `${cm} cm = ${inch.toFixed(4)} in`;
+      } else {
+        document.getElementById('inchInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertInchToCm() {
+      const inch = parseFloat(document.getElementById('inchInput').value);
+      if (!isNaN(inch)) {
+        const cm = inch * 2.54;
+        document.getElementById('cmInput').value = cm.toFixed(2);
+        document.getElementById('result').innerText = `${inch} in = ${cm.toFixed(2)} cm`;
+      } else {
+        document.getElementById('cmInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

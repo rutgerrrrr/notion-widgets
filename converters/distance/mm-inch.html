@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Millimeters ↔ Inches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Millimeters ↔ Inches</h3>
+    <div class="inputs">
+      <input type="number" id="mmInput" placeholder="Millimeters (mm)" oninput="convertMmToInch()">
+      <input type="number" id="inchInput" placeholder="Inches (in)" oninput="convertInchToMm()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertMmToInch() {
+      const mm = parseFloat(document.getElementById('mmInput').value);
+      if (!isNaN(mm)) {
+        const inch = mm / 25.4;
+        document.getElementById('inchInput').value = inch.toFixed(4);
+        document.getElementById('result').innerText = `${mm} mm = ${inch.toFixed(4)} in`;
+      } else {
+        document.getElementById('inchInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertInchToMm() {
+      const inch = parseFloat(document.getElementById('inchInput').value);
+      if (!isNaN(inch)) {
+        const mm = inch * 25.4;
+        document.getElementById('mmInput').value = mm.toFixed(2);
+        document.getElementById('result').innerText = `${inch} in = ${mm.toFixed(2)} mm`;
+      } else {
+        document.getElementById('mmInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

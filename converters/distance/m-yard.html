@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meters ↔ Yards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Meters ↔ Yards</h3>
+    <div class="inputs">
+      <input type="number" id="mInput" placeholder="Meters (m)" oninput="convertMtoYd()">
+      <input type="number" id="ydInput" placeholder="Yard (yd)" oninput="convertYdtoM()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertMtoYd() {
+      const m = parseFloat(document.getElementById('mInput').value);
+      if (!isNaN(m)) {
+        const yd = m * 1.0936;
+        document.getElementById('ydInput').value = yd.toFixed(4);
+        document.getElementById('result').innerText = `${m} m = ${yd.toFixed(4)} yd`;
+      } else {
+        document.getElementById('ydInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertYdtoM() {
+      const yd = parseFloat(document.getElementById('ydInput').value);
+      if (!isNaN(yd)) {
+        const m = yd / 1.0936;
+        document.getElementById('mInput').value = m.toFixed(4);
+        document.getElementById('result').innerText = `${yd} yd = ${m.toFixed(4)} m`;
+      } else {
+        document.getElementById('mInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

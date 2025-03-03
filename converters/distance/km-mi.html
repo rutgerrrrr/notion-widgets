@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kilometers ↔ Miles</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Kilometers ↔ Miles</h3>
+    <div class="inputs">
+      <input type="number" id="kmInput" placeholder="Kilometers (km)" oninput="convertKmToMi()">
+      <input type="number" id="miInput" placeholder="Miles (mi)" oninput="convertMiToKm()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertKmToMi() {
+      const km = parseFloat(document.getElementById('kmInput').value);
+      if (!isNaN(km)) {
+        const mi = km * 0.621371;
+        document.getElementById('miInput').value = mi.toFixed(4);
+        document.getElementById('result').innerText = `${km} km = ${mi.toFixed(4)} mi`;
+      } else {
+        document.getElementById('miInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertMiToKm() {
+      const mi = parseFloat(document.getElementById('miInput').value);
+      if (!isNaN(mi)) {
+        const km = mi / 0.621371;
+        document.getElementById('kmInput').value = km.toFixed(4);
+        document.getElementById('result').innerText = `${mi} mi = ${km.toFixed(4)} km`;
+      } else {
+        document.getElementById('kmInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

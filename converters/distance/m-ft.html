@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meters ↔ Feet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Meters ↔ Feet</h3>
+    <div class="inputs">
+      <input type="number" id="mInput" placeholder="Meters (m)" oninput="convertMtoFt()">
+      <input type="number" id="ftInput" placeholder="Feet (ft)" oninput="convertFttoM()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertMtoFt() {
+      const m = parseFloat(document.getElementById('mInput').value);
+      if (!isNaN(m)) {
+        const ft = m * 3.28084;
+        document.getElementById('ftInput').value = ft.toFixed(4);
+        document.getElementById('result').innerText = `${m} m = ${ft.toFixed(4)} ft`;
+      } else {
+        document.getElementById('ftInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertFttoM() {
+      const ft = parseFloat(document.getElementById('ftInput').value);
+      if (!isNaN(ft)) {
+        const m = ft / 3.28084;
+        document.getElementById('mInput').value = m.toFixed(4);
+        document.getElementById('result').innerText = `${ft} ft = ${m.toFixed(4)} m`;
+      } else {
+        document.getElementById('mInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>
