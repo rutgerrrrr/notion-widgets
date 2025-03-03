@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Rankine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Rankine</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoR()">
+      <input type="number" id="rankineInput" placeholder="Rankine (°R)" oninput="convertRtoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoR() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const rankine = (celsius + 273.15) * 9/5;
+        document.getElementById('rankineInput').value = rankine.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${rankine.toFixed(2)}°R`;
+      } else {
+        document.getElementById('rankineInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertRtoC() {
+      const rankine = parseFloat(document.getElementById('rankineInput').value);
+      if (!isNaN(rankine)) {
+        const celsius = (rankine - 491.67) * 5/9;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${rankine}°R = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

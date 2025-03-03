@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Rømer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Rømer</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoRomer()">
+      <input type="number" id="romerInput" placeholder="Rømer (°Rø)" oninput="convertRomertoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoRomer() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const romer = celsius * 21/40 + 7.5;
+        document.getElementById('romerInput').value = romer.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${romer.toFixed(2)}°Rø`;
+      } else {
+        document.getElementById('romerInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertRomertoC() {
+      const romer = parseFloat(document.getElementById('romerInput').value);
+      if (!isNaN(romer)) {
+        const celsius = (romer - 7.5) * 40/21;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${romer}°Rø = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>
