@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Kelvin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Kelvin</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoK()">
+      <input type="number" id="kelvinInput" placeholder="Kelvin (K)" oninput="convertKtoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoK() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const kelvin = celsius + 273.15;
+        document.getElementById('kelvinInput').value = kelvin.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${kelvin.toFixed(2)} K`;
+      } else {
+        document.getElementById('kelvinInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertKtoC() {
+      const kelvin = parseFloat(document.getElementById('kelvinInput').value);
+      if (!isNaN(kelvin)) {
+        const celsius = kelvin - 273.15;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${kelvin} K = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>
