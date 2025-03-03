@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Delisle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Delisle</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoD()">
+      <input type="number" id="delisleInput" placeholder="Delisle (°De)" oninput="convertDtoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoD() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const delisle = (100 - celsius) * 3/2;
+        document.getElementById('delisleInput').value = delisle.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${delisle.toFixed(2)}°De`;
+      } else {
+        document.getElementById('delisleInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertDtoC() {
+      const delisle = parseFloat(document.getElementById('delisleInput').value);
+      if (!isNaN(delisle)) {
+        const celsius = 100 - (delisle * 2/3);
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${delisle}°De = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

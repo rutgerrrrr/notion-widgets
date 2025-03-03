@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Gas Mark</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Gas Mark</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoG()">
+      <input type="number" id="gasmarkInput" placeholder="Gas Mark" oninput="convertGtoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoG() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const gasmark = (celsius - 121) / 135;
+        document.getElementById('gasmarkInput').value = gasmark.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${gasmark.toFixed(2)} Gas Mark`;
+      } else {
+        document.getElementById('gasmarkInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertGtoC() {
+      const gasmark = parseFloat(document.getElementById('gasmarkInput').value);
+      if (!isNaN(gasmark)) {
+        const celsius = gasmark * 135 + 121;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${gasmark} Gas Mark = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Leiden</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Leiden</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoL()">
+      <input type="number" id="leidenInput" placeholder="Leiden (°L)" oninput="convertLtoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoL() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const leiden = celsius + 253;
+        document.getElementById('leidenInput').value = leiden.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${leiden.toFixed(2)}°L`;
+      } else {
+        document.getElementById('leidenInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertLtoC() {
+      const leiden = parseFloat(document.getElementById('leidenInput').value);
+      if (!isNaN(leiden)) {
+        const celsius = leiden - 253;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${leiden}°L = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

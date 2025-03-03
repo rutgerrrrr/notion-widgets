@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Wedgwood</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Wedgwood</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoW()">
+      <input type="number" id="wedgwoodInput" placeholder="Wedgwood (°W)" oninput="convertWtoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoW() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const wedgwood = (celsius + 1370) / 80;
+        document.getElementById('wedgwoodInput').value = wedgwood.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${wedgwood.toFixed(2)}°W`;
+      } else {
+        document.getElementById('wedgwoodInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertWtoC() {
+      const wedgwood = parseFloat(document.getElementById('wedgwoodInput').value);
+      if (!isNaN(wedgwood)) {
+        const celsius = wedgwood * 80 - 1370;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${wedgwood}°W = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>

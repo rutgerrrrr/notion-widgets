@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius ↔ Réaumur</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="widget">
+    <h3>Celsius ↔ Réaumur</h3>
+    <div class="inputs">
+      <input type="number" id="celsiusInput" placeholder="Celsius (°C)" oninput="convertCtoRe()">
+      <input type="number" id="reaumurInput" placeholder="Réaumur (°Ré)" oninput="convertRetoC()">
+    </div>
+    <div class="result" id="result">&nbsp;</div>
+  </div>
+
+  <script>
+    function convertCtoRe() {
+      const celsius = parseFloat(document.getElementById('celsiusInput').value);
+      if (!isNaN(celsius)) {
+        const reaumur = celsius * 4/5;
+        document.getElementById('reaumurInput').value = reaumur.toFixed(2);
+        document.getElementById('result').innerText = `${celsius}°C = ${reaumur.toFixed(2)}°Ré`;
+      } else {
+        document.getElementById('reaumurInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+
+    function convertRetoC() {
+      const reaumur = parseFloat(document.getElementById('reaumurInput').value);
+      if (!isNaN(reaumur)) {
+        const celsius = reaumur * 5/4;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('result').innerText = `${reaumur}°Ré = ${celsius.toFixed(2)}°C`;
+      } else {
+        document.getElementById('celsiusInput').value = "";
+        document.getElementById('result').innerHTML = "&nbsp;";
+      }
+    }
+  </script>
+</body>
+</html>
